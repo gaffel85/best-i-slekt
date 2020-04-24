@@ -46,8 +46,8 @@ export default {
 .card {
   background-color: transparent;
   margin: auto;
-  width: 600px;
-  height: 400px;
+  width: 80%;
+  height: 600px;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
