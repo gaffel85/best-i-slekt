@@ -1,13 +1,17 @@
 <template>
   <div id="app">
     <h1>Dagens uppgift</h1>
+    <Assignment />
   </div>
 </template>
 
 <script>
+import Assignment from "./components/Assignment.vue";
 export default {
   name: "app",
-  components: {}
+  components: {
+    Assignment
+  }
 };
 </script>
 
