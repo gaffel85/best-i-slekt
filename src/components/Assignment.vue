@@ -14,10 +14,10 @@
         <h3>Långt papper</h3>
         <p>Gör en så lång skapelse som möjligt av dessa material. Skapelsen får bara bestå av en sorts material. Längst skapelse vinner.</p>
         <p>Du har 5 minuter på dig. Din tid börjar NU!</p>
-        <p>PS. Skapelsen måste ha kontakt med alla delar av sig själv</p>
+        <p>PS. Skapelsen måste ha kontakt med alla delar av sig själv och kunna flyttas i ett stycke</p>
         <p>
           <b>När du är nöjd:</b>
- Mät skapelsen på längden. Om den går sönder vid mätning får du mäta den längsta hela delen.
+          Mät skapelsen på längden. Om den går sönder vid mätning får du mäta den längsta hela delen.
         </p>
       </div>
     </div>
