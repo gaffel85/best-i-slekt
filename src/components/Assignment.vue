@@ -17,7 +17,7 @@
         <p>PS. Skapelsen måste ha kontakt med alla delar av sig själv och kunna flyttas i ett stycke</p>
         <p>
           <b>När du är nöjd:</b>
-          Mät skapelsen på längden. Om den går sönder vid mätning får du mäta den längsta hela delen.
+          Mät skapelsen på längden.
         </p>
       </div>
     </div>
