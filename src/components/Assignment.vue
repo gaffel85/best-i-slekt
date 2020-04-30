@@ -1,10 +1,16 @@
 <template>
   <div class="card">
-    <div class="card-inner" v-bind:class="[isOpen ? 'isClicked' : '']" @click="toggleClicked()">
+    <div
+      class="card-inner"
+      v-bind:class="[isOpen ? 'isClicked' : '']"
+      @click="toggleClicked()"
+    >
       <div class="card-front">
         <p>Tillåtet matieral:</p>
         <ul>
-          <li>3 A4-ark (skrivarpapper eller från collegieblock, ej tjockare)</li>
+          <li>
+            3 A4-ark (skrivarpapper eller från collegieblock, ej tjockare)
+          </li>
           <li>1 sax</li>
           <li>1 penna</li>
         </ul>
@@ -12,9 +18,15 @@
       </div>
       <div class="card-back">
         <h3>Långt papper</h3>
-        <p>Gör en så lång skapelse som möjligt av dessa material. Skapelsen får bara bestå av en sorts material. Längst skapelse vinner.</p>
+        <p>
+          Gör en så lång skapelse som möjligt av dessa material. Skapelsen får
+          bara bestå av en sorts material. Längst skapelse vinner.
+        </p>
         <p>Du har 5 minuter på dig. Din tid börjar NU!</p>
-        <p>PS. Skapelsen måste ha kontakt med alla delar av sig själv och kunna flyttas i ett stycke</p>
+        <p>
+          PS. Skapelsen måste ha kontakt med alla delar av sig själv och kunna
+          flyttas i ett stycke
+        </p>
         <p>
           <b>När du är nöjd:</b>
           Mät skapelsen på längden.
@@ -29,19 +41,20 @@ export default {
   name: "Settings",
   props: {
     prepars: String,
-    assignment: String
+    assignment: String,
   },
   data: function() {
     return {
-      isOpen: false
+      isOpen: false,
     };
   },
 
   methods: {
     toggleClicked: function() {
       this.isOpen = !this.isOpen;
-    }
-  }
+      this.$ga.event("assignment", "open");
+    },
+  },
 };
 </script>
 
