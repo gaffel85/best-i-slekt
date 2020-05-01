@@ -42,7 +42,7 @@ export default {
     };
   },
   created: function() {
-    if (allowedToView(this.$cookies, this.id, this.timelimit)) {
+    if (allowedToView(this.$cookies, this.id, this.timelimit).allowed) {
       markAsStarted(this.$cookies, this.id);
     } else {
       this.$router.push({ path: "/preparations", query: this.$route.query });

@@ -7,13 +7,13 @@ function allowedToView(cookies, assingmentId, timelimit) {
     const timeLeft = prevData.timestamp + timelimit - now;
     if (timeLeft < 0) {
       console.log("Times up");
-      return false;
+      return { allowed: false };
     } else {
       console.log("Still time left: " + timeLeft / 1000);
-      return true;
+      return { allowed: true, started: true };
     }
   } else {
-    return true;
+    return { allowed: true, started: false };
   }
 }
 
