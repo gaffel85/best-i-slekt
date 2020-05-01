@@ -3,7 +3,7 @@
     <form>
       <div class="form-input">Namn:</div>
       <input type="text" v-model="name" />
-      <button @click.prevent="doneClicked()">Klar</button>
+      <button class="login-button" @click.prevent="doneClicked()">Klar</button>
     </form>
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
   methods: {
     doneClicked: function() {
       this.$cookies.set("username", this.name);
-      this.$router.push("/assignment");
+      this.$router.push("/preparations");
     },
   },
 };
@@ -34,6 +34,7 @@ form {
 .form-input {
   font-size: 22pt;
   font-weight: bold;
+  color: #ffffff;
 }
 input {
   padding: 12px 20px;
@@ -47,7 +48,7 @@ select {
   padding: 16px 20px;
   font-size: 20pt;
 }
-button {
+.login-button {
   font-size: 20pt;
   background: #dadce1;
   width: 90%;

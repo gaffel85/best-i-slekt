@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="prepare-page">
     <h2>{{ this.name }}</h2>
     <div class="prepare-box">
       <div class="prepare-box-inner">
@@ -11,7 +11,9 @@
           <li>1 sax</li>
           <li>1 penna</li>
         </ul>
-        <button @click.prevent="startClicked()">Starta utmaningen</button>
+        <button class="start-button" @click.prevent="startClicked()">
+          Starta utmaningen
+        </button>
       </div>
     </div>
   </div>
@@ -32,14 +34,34 @@ export default {
 
   methods: {
     startClicked: function() {
-      this.$router.push({ path: "/assignment", query: this.$route.query });
+      const options = {
+        html: true,
+        okText: "Starta nu",
+        cancelText: "Avbryt",
+      };
+
+      this.$dialog
+        .confirm(
+          '<h2>Vill du starta nu?</h2>Du kan bara starta utmaningen en gång. Tiden börjar när du trycker på "Starta nu"',
+          options
+        )
+        .then((dialog) => {
+          console.log(dialog);
+          this.$router.push({ path: "/assignment", query: this.$route.query });
+        })
+        .catch(function() {
+          console.log("Clicked on cancel");
+        });
     },
   },
 };
 </script>
 
 <style>
-/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.prepare-page {
+  color: #ffffff;
+}
+
 .prepare-box {
   background-color: #ffffff;
   width: 100%;
@@ -58,7 +80,11 @@ ul {
   text-align: left;
 }
 
-button {
+.start-button {
   background: #88b688;
+  font-size: 20pt;
+  width: 90%;
+  padding: 10px;
+  border-radius: 4px;
 }
 </style>

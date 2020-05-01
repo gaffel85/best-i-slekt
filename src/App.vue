@@ -6,24 +6,22 @@
 </template>
 
 <script>
+const { resetAssignment } = require("./fn/assignment-state").default;
+
 const getUserName = (router, cookies) => {
-  const paramUser = getQueryName(router);
   const cookieUser = cookies.get("username");
-  if (paramUser) {
-    cookies.remove("username");
-    return paramUser;
-  } else {
-    return cookieUser;
-  }
+  return cookieUser;
 };
 
-const getQueryName = (router) => {
-  if (!router.query) return null;
-  return router.query.name;
+const checkResetAssignment = (router, cookies) => {
+  if (!router.query) return;
+  const assingementId = router.query.reset;
+  resetAssignment(cookies, assingementId);
 };
 
 export default {
   created: function() {
+    checkResetAssignment(this.$route, this.$cookies);
     const username = getUserName(this.$route, this.$cookies);
     if (username) {
       this.$router.push({ path: "/preparations", query: { name: username } });
@@ -42,7 +40,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #ffffff;
   margin: 0px;
   padding: 0px;
   background: #2a557b;

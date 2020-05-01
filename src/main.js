@@ -3,14 +3,17 @@ import VueRouter from "vue-router";
 import VueCookies from "vue-cookies";
 import App from "./App.vue";
 import VueAnalytics from "vue-analytics";
+import VuejsDialog from "vuejs-dialog";
 import Assignment from "./components/Assignment.vue";
 import Login from "./components/Login.vue";
 import Preparations from "./components/Preparations.vue";
+import "vuejs-dialog/dist/vuejs-dialog.min.css";
 
 Vue.config.productionTip = false;
 
 Vue.use(VueCookies);
 Vue.use(VueRouter);
+Vue.use(VuejsDialog);
 
 Vue.$cookies.config("365d");
 

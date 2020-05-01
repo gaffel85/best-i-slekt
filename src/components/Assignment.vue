@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="assignment-page">
     <h2>{{ this.name }}</h2>
     <div class="assignment-box">
       <div class="assignment-box-inner">
@@ -23,6 +23,11 @@
 </template>
 
 <script>
+const {
+  allowedToView,
+  markAsStarted,
+} = require("../fn/assignment-state").default;
+
 export default {
   name: "Assignment",
   props: {
@@ -32,13 +37,42 @@ export default {
   data: function() {
     return {
       name: this.$route.query.name,
+      id: "long-paper",
+      timelimit: 1000 * 60,
     };
+  },
+  created: function() {
+    if (allowedToView(this.$cookies, this.id, this.timelimit)) {
+      markAsStarted(this.$cookies, this.id);
+    } else {
+      this.$router.push({ path: "/preparations", query: this.$route.query });
+    }
+    /*
+    const prevData = this.$cookies.get(this.id);
+    const now = Date.now();
+
+    if (prevData) {
+      console.log("Saved data: ", prevData);
+      const timeLeft = prevData.timestamp + this.timelimit - now;
+      if (timeLeft < 0) {
+      } else {
+        console.log("Still time left: " + timeLeft / 1000);
+      }
+    } else {
+      const data = { timestamp: now };
+      console.log("Sets timestamp");
+      this.$cookies.set(this.id, JSON.stringify(data));
+    }
+    */
   },
 };
 </script>
 
 <style>
-/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.assignment-page {
+  color: #ffffff;
+}
+
 .assignment-box {
   background-color: #ffffff;
   width: 100%;
