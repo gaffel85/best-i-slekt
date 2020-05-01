@@ -26,7 +26,7 @@ export default {
   created: function() {
     const username = getUserName(this.$route, this.$cookies);
     if (username) {
-      this.$router.push({ path: "/assignment", query: { name: username } });
+      this.$router.push({ path: "/preparations", query: { name: username } });
     } else {
       this.$router.push("/login");
     }

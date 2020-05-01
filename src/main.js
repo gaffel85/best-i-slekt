@@ -5,6 +5,7 @@ import App from "./App.vue";
 import VueAnalytics from "vue-analytics";
 import Assignment from "./components/Assignment.vue";
 import Login from "./components/Login.vue";
+import Preparations from "./components/Preparations.vue";
 
 Vue.config.productionTip = false;
 
@@ -16,6 +17,7 @@ Vue.$cookies.config("365d");
 const routes = [
   { path: "/assignment", component: Assignment },
   { path: "/login", component: Login },
+  { path: "/preparations", component: Preparations },
 ];
 
 const router = new VueRouter({
