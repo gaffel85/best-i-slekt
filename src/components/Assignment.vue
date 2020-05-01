@@ -1,38 +1,22 @@
 <template>
-  <div class="app">
-    <div class="card">
-      <div
-        class="card-inner"
-        v-bind:class="[isOpen ? 'isClicked' : '']"
-        @click="toggleClicked()"
-      >
-        <div class="card-front">
-          <p>Tillåtet matieral:</p>
-          <ul>
-            <li>
-              3 A4-ark (skrivarpapper eller från collegieblock, ej tjockare)
-            </li>
-            <li>1 sax</li>
-            <li>1 penna</li>
-          </ul>
-          <h3>Tryck för att börja utmaningen</h3>
-        </div>
-        <div class="card-back">
-          <h3>Långt papper</h3>
-          <p>
-            Gör en så lång skapelse som möjligt av dessa material. Skapelsen får
-            bara bestå av en sorts material. Längst skapelse vinner.
-          </p>
-          <p>Du har 5 minuter på dig. Din tid börjar NU!</p>
-          <p>
-            PS. Skapelsen måste ha kontakt med alla delar av sig själv och kunna
-            flyttas i ett stycke
-          </p>
-          <p>
-            <b>När du är nöjd:</b>
-            Mät skapelsen på längden.
-          </p>
-        </div>
+  <div>
+    <h2>{{ this.name }}</h2>
+    <div class="assignment-box">
+      <div class="assignment-box-inner">
+        <h3>Långt papper</h3>
+        <p>
+          Gör en så lång skapelse som möjligt av dessa material. Skapelsen får
+          bara bestå av en sorts material. Längst skapelse vinner.
+        </p>
+        <p>Du har 5 minuter på dig. Din tid börjar NU!</p>
+        <p>
+          PS. Skapelsen måste ha kontakt med alla delar av sig själv och kunna
+          flyttas i ett stycke
+        </p>
+        <p>
+          <b>När du är nöjd:</b>
+          Mät skapelsen på längden.
+        </p>
       </div>
     </div>
   </div>
@@ -40,90 +24,28 @@
 
 <script>
 export default {
-  name: "Settings",
+  name: "Assignment",
   props: {
     prepars: String,
     assignment: String,
   },
   data: function() {
     return {
-      isOpen: false,
+      name: this.$route.query.name,
     };
-  },
-
-  methods: {
-    toggleClicked: function() {
-      this.isOpen = !this.isOpen;
-      this.$ga.event("assignment", "open");
-    },
   },
 };
 </script>
 
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #ffffff;
-  margin: 0px;
-  padding: 0px;
-  width: 100vw;
-  height: 100vh;
-}
-body {
-  background: #2a557b;
-}
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
-.card {
-  background-color: transparent;
-  margin: auto;
-  width: 80%;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
-}
-
-.card.hidden {
-  visibility: hidden;
-}
-
-/* This container is needed to position the front and back side */
-.card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.card-inner.isClicked {
-  transform: rotateY(180deg);
-}
-
-/* Position the front and back side */
-.card-front,
-.card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
-  border: 1px solid #000;
-}
-
-/* Style the front side (fallback if image is missing) */
-.card-front {
-  background: #ffffff;
-  color: black;
-}
-
-/* Style the back side */
-.card-back {
+.assignment-box {
   background-color: #ffffff;
+  width: 100%;
   color: #000000;
-  transform: rotateY(180deg);
+}
+
+.assignment-box-inner {
   padding: 20px;
 }
 
@@ -133,5 +55,9 @@ p {
 
 ul {
   text-align: left;
+}
+
+button {
+  background: #88b688;
 }
 </style>

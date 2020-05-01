@@ -11,7 +11,7 @@
           <li>1 sax</li>
           <li>1 penna</li>
         </ul>
-        <button>Starta utmaningen</button>
+        <button @click.prevent="startClicked()">Starta utmaningen</button>
       </div>
     </div>
   </div>
@@ -31,9 +31,8 @@ export default {
   },
 
   methods: {
-    toggleClicked: function() {
-      this.isOpen = !this.isOpen;
-      this.$ga.event("assignment", "open");
+    startClicked: function() {
+      this.$router.push({ path: "/assignment", query: this.$route.query });
     },
   },
 };
