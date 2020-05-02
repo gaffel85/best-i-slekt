@@ -21,7 +21,7 @@ Vue.use(VuejsDialog);
 Vue.$cookies.config("365d");
 
 const routes = [
-  { path: "/assignment", component: Assignment },
+  { path: "/assignment/:id", component: Assignment },
   { path: "/login", component: Login },
   { path: "/preparations", component: Preparations },
 ];

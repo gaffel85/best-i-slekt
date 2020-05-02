@@ -4,13 +4,7 @@
     <div class="prepare-box">
       <div class="prepare-box-inner">
         <p>Tillåtet matieral:</p>
-        <ul>
-          <li>
-            3 A4-ark (skrivarpapper eller från collegieblock, ej tjockare)
-          </li>
-          <li>1 sax</li>
-          <li>1 penna</li>
-        </ul>
+        <p v-html="preparations"></p>
         <button
           class="start-button"
           @click.prevent="startClicked()"
@@ -32,19 +26,21 @@
 <script>
 const { allowedToView } = require("../fn/assignment-state").default;
 const { logViewed } = require("../fn/logger").default;
+const assignments = require("../assets/assignments.json");
+
+const assigment = assignments.find((a) => {
+  return a.active === true;
+});
 
 export default {
   name: "Preparations",
-  props: {
-    prepars: String,
-    assignment: String,
-  },
   data: function() {
     return {
       hideStartButton: false,
       name: this.$route.query.name,
-      id: "long-paper",
-      timelimit: 1000 * 60,
+      id: assigment.id,
+      timelimit: assigment.timelimit,
+      preparations: assigment.preparations,
       buttonText: "Starta utmaningen",
     };
   },
@@ -70,7 +66,7 @@ export default {
       const result = allowedToView(this.$cookies, this.id, this.timelimit);
       if (result.started) {
         this.$router.push({
-          path: "/assignment",
+          path: "/assignment/" + this.id,
           query: this.$route.query,
         });
       } else {
@@ -88,7 +84,7 @@ export default {
           .then((dialog) => {
             console.log(dialog);
             this.$router.push({
-              path: "/assignment",
+              path: "/assignment/" + this.id,
               query: this.$route.query,
             });
           })

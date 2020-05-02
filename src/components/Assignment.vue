@@ -3,20 +3,8 @@
     <h2>{{ this.name }}</h2>
     <div class="assignment-box">
       <div class="assignment-box-inner">
-        <h3>Långt papper</h3>
-        <p>
-          Gör en så lång skapelse som möjligt av dessa material. Skapelsen får
-          bara bestå av en sorts material. Längst skapelse vinner.
-        </p>
-        <p>Du har 5 minuter på dig. Din tid börjar NU!</p>
-        <p>
-          PS. Skapelsen måste ha kontakt med alla delar av sig själv och kunna
-          flyttas i ett stycke
-        </p>
-        <p>
-          <b>När du är nöjd:</b>
-          Mät skapelsen på längden.
-        </p>
+        <h3>{{ title }}</h3>
+        <p v-html="text"></p>
       </div>
     </div>
   </div>
@@ -28,21 +16,27 @@ const {
   markAsStarted,
 } = require("../fn/assignment-state").default;
 const { logOpened } = require("../fn/logger").default;
+const assignments = require("../assets/assignments.json");
+
+const findAssignment = (id) => {
+  return assignments.find((a) => {
+    return a.id === id;
+  });
+};
 
 export default {
   name: "Assignment",
-  props: {
-    prepars: String,
-    assignment: String,
-  },
   data: function() {
     return {
       name: this.$route.query.name,
-      id: "long-paper",
-      timelimit: 1000 * 60,
+      id: this.$route.params.id,
+      title: findAssignment(this.$route.params.id).title,
+      text: findAssignment(this.$route.params.id).assignment,
+      timelimit: findAssignment(this.$route.params.id).timelimit,
     };
   },
   created: function() {
+    console.log("Got id " + this.id);
     logOpened(this.$http, this.name, this.id);
     if (allowedToView(this.$cookies, this.id, this.timelimit).allowed) {
       markAsStarted(this.$cookies, this.id);
