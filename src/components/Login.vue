@@ -20,7 +20,7 @@ export default {
   methods: {
     doneClicked: function() {
       this.$cookies.set("username", this.name);
-      this.$router.push("/preparations");
+      this.$router.push({ path: "/preparations", query: { name: this.name } });
     },
   },
 };
