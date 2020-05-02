@@ -31,6 +31,7 @@
 
 <script>
 const { allowedToView } = require("../fn/assignment-state").default;
+const { logViewed } = require("../fn/logger").default;
 
 export default {
   name: "Preparations",
@@ -48,6 +49,7 @@ export default {
     };
   },
   created: function() {
+    logViewed(this.$http, this.name, this.id);
     const result = allowedToView(this.$cookies, this.id, this.timelimit);
     if (!result.allowed) {
       this.hideStartButton = true;

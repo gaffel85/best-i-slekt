@@ -27,6 +27,7 @@ const {
   allowedToView,
   markAsStarted,
 } = require("../fn/assignment-state").default;
+const { logOpened } = require("../fn/logger").default;
 
 export default {
   name: "Assignment",
@@ -42,6 +43,7 @@ export default {
     };
   },
   created: function() {
+    logOpened(this.$http, this.name, this.id);
     if (allowedToView(this.$cookies, this.id, this.timelimit).allowed) {
       markAsStarted(this.$cookies, this.id);
     } else {

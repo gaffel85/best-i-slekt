@@ -8,6 +8,9 @@ import Assignment from "./components/Assignment.vue";
 import Login from "./components/Login.vue";
 import Preparations from "./components/Preparations.vue";
 import "vuejs-dialog/dist/vuejs-dialog.min.css";
+import axios from "axios";
+
+Vue.prototype.$http = axios;
 
 Vue.config.productionTip = false;
 
