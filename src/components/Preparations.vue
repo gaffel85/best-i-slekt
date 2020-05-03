@@ -3,7 +3,6 @@
     <h2>{{ this.name }}</h2>
     <div class="prepare-box">
       <div class="prepare-box-inner">
-        <p>Tillåtet matieral:</p>
         <p v-html="preparations"></p>
         <button
           class="start-button"

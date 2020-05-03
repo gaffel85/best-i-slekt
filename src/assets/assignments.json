@@ -2,9 +2,17 @@
   {
     "id": "long-paper",
     "title": "Långt papper",
-    "timelimit": 60000,
-    "active": true,
-    "preparations": "<ul><li>3 A4-ark (skrivarpapper eller från collegieblock, ej tjockare)</li><li>1 sax</li><li>1 penna</li></ul>",
+    "timelimit": 300000,
+    "active": false,
+    "preparations": "<p>Tillåtet matieral:</p><ul><li>3 A4-ark (skrivarpapper eller från collegieblock, ej tjockare)</li><li>1 sax</li><li>1 penna</li></ul>",
     "assignment": "<p>Gör en så lång skapelse som möjligt av dessa material. Skapelsen får bara bestå av en sorts material. Längst skapelse vinner.</p><p>Du har 5 minuter på dig. Din tid börjar NU!</p><p>PS. Skapelsen måste ha kontakt med alla delar av sig själv och kunnaflyttas i ett stycke</p><p><b>När du är nöjd:</b>Mät skapelsen på längden.</p>"
+  },
+  {
+    "id": "gung-sko",
+    "title": "Gungsko",
+    "timelimit": 1800000,
+    "active": true,
+    "preparations": "<p>Hitta en gunga (eller annan sittplats om nödvändigt) som har ett stort fritt område framför sig.</p><p>Ta på dig ett par skor som är lätta att få loss från foten</p>",
+    "assignment": "<p>Sätt dig på gungan och ta upp dina fötter från marken.</p><p>Få iväg dina skor så långt i från gungan som möjligt.</p><p>När en sko har nuddat marken får den inte flyttas.</p><p>Du har 30 minuter på dig.</p>"
   }
 ]
