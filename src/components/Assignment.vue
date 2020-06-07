@@ -13,13 +13,13 @@
 <script>
 const {
   allowedToView,
-  markAsStarted,
+  markAsStarted
 } = require("../fn/assignment-state").default;
 const { logOpened } = require("../fn/logger").default;
 const assignments = require("../assets/assignments.json");
 
-const findAssignment = (id) => {
-  return assignments.find((a) => {
+const findAssignment = id => {
+  return assignments.find(a => {
     return a.id === id;
   });
 };
@@ -32,7 +32,7 @@ export default {
       id: this.$route.params.id,
       title: findAssignment(this.$route.params.id).title,
       text: findAssignment(this.$route.params.id).assignment,
-      timelimit: findAssignment(this.$route.params.id).timelimit,
+      timelimit: findAssignment(this.$route.params.id).timelimit
     };
   },
   created: function() {
@@ -60,7 +60,7 @@ export default {
       this.$cookies.set(this.id, JSON.stringify(data));
     }
     */
-  },
+  }
 };
 </script>
 
@@ -89,5 +89,9 @@ ul {
 
 button {
   background: #88b688;
+}
+
+img {
+  display: block;
 }
 </style>
